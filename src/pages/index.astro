@@ -1,5 +1,5 @@
 ---
-import { Icon } from "astro-icon";
+import Icon from "../components/Icon.astro";
 import Layout from "../layouts/Layout.astro";
 ---
 
@@ -9,10 +9,17 @@ import Layout from "../layouts/Layout.astro";
   >
     <div class="container flex flex-col justify-center items-center">
       <h1 class="text-xl sm:text-4xl md:text-6xl">Siddharth Doshi</h1>
-      <div>
-        <p class="w-6">
-          <Icon name="mdi:account" />
-        </p>
+      <div class="my-4 flex space-x-2 sm:space-x-3 md:space-x-4">
+        <Icon iconName="simple-icons:github" url="https://github.com/sidoshi" />
+        <Icon iconName="carbon:logo-keybase" url="https://keybase.io/sidoshi" />
+        <Icon
+          iconName="simple-icons:twitter"
+          url="https://twitter.com/_sidoshi"
+        />
+        <Icon
+          iconName="simple-icons:spotify"
+          url="https://open.spotify.com/user/o404txvrellxiumn3k76yhdsz"
+        />
       </div>
     </div>
   </main>
