@@ -1,6 +1,8 @@
 ---
 import Icon from "../components/Icon.astro";
 import Layout from "../layouts/Layout.astro";
+
+import { Github, Keybase, Bluesky, Spotify } from "simple-icons-astro";
 ---
 
 <Layout title="Siddharth Doshi">
@@ -10,16 +12,21 @@ import Layout from "../layouts/Layout.astro";
     <div class="container flex flex-col justify-center items-center">
       <h1 class="text-2xl sm:text-4xl md:text-6xl">Siddharth Doshi</h1>
       <div class="my-4 flex space-x-2 sm:space-x-3 md:space-x-4">
-        <Icon iconName="simple-icons:github" url="https://github.com/sidoshi" />
-        <Icon iconName="carbon:logo-keybase" url="https://keybase.io/sidoshi" />
-        <Icon
-          iconName="simple-icons:twitter"
-          url="https://twitter.com/_sidoshi"
-        />
-        <Icon
-          iconName="simple-icons:spotify"
-          url="https://open.spotify.com/user/o404txvrellxiumn3k76yhdsz"
-        />
+        <Icon url="https://github.com/sidoshi">
+          <Github size="large" />
+        </Icon>
+
+        <Icon url="https://keybase.io/sidoshi">
+          <Keybase size="large" />
+        </Icon>
+
+        <Icon url="https://bsky.app/profile/sidoshi.com">
+          <Bluesky size="large" />
+        </Icon>
+
+        <Icon url="https://open.spotify.com/user/o404txvrellxiumn3k76yhdsz">
+          <Spotify size="large" />
+        </Icon>
       </div>
     </div>
   </main>
