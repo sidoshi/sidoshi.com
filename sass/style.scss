@@ -34,7 +34,6 @@ body {
   max-width: 80ch;
   margin: 0 auto;
   padding: 2rem 1rem;
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
 }
@@ -61,13 +60,36 @@ header nav {
 
   .nav-left {
     display: flex;
+    align-items: center;
     gap: 1rem;
+
+    svg {
+      width: 1.2em;
+      height: 1.2em;
+      vertical-align: middle;
+    }
+  }
+
+  .site-id {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.2;
+
+    .at {
+      color: var(--link);
+    }
+  }
+
+  .site-name {
+    font-size: 0.8rem;
+    color: var(--text-muted);
   }
 
   .nav-links {
     display: flex;
-    align-items: center;
+    align-items: flex-end;
     gap: 1rem;
+    justify-content: flex-end;
 
     svg {
       width: 1.2em;
@@ -82,6 +104,12 @@ main {
 
   h1 {
     margin-bottom: 1rem;
+
+    svg {
+      width: 0.6em;
+      height: 0.6em;
+      vertical-align: middle;
+    }
   }
 
   h2,
@@ -268,23 +296,4 @@ article {
   margin-top: 3rem;
   font-size: 0.85rem;
   color: var(--text-muted);
-}
-
-footer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 0px;
-  margin-top: 3rem;
-  padding-top: 1rem;
-  border-top: 1px solid var(--border);
-  color: var(--text-muted);
-  font-size: 0.85rem;
-
-  svg {
-    color: var(--text-muted);
-    width: 1.2em;
-    height: 1.2em;
-    vertical-align: middle;
-  }
 }

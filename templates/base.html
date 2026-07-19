@@ -17,13 +17,29 @@
   <header>
     <nav>
       <div class="nav-left">
-        <a href="{{ config.base_url }}" class="site-title">@sidoshi</a>
-        {% set tags = get_taxonomy(kind="tags") %}
-        {% if tags.items | length > 0 %}
-        <a href="{{ get_url(path='tags') }}" title="Tags">#</a>
-        {% endif %}
+        <div class="site-id">
+          <div class="username">
+            <a href="{{ config.base_url }}" class="site-title">
+              <span class="at">@</span>sidoshi
+            </a>
+          </div>
+          <span class="site-name">Siddharth Doshi</span>
+        </div>
       </div>
       <div class="nav-links">
+        {% set tags = get_taxonomy(kind="tags") %}
+        {% if tags.items | length > 0 %}
+        <a href="{{ get_url(path='tags') }}" aria-label="Tags" title="Tags">
+          tags
+        </a>
+        {% endif %}
+
+        {% if config.generate_feeds %}
+        <a href="{{ get_url(path='atom.xml') }}" aria-label="RSS Feed" title="RSS Feed">
+          rss
+        </a>
+        {% endif %}
+        |
         <a href="mailto:public@sidoshi.com" aria-label="Email" title="Email">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 3H21C21.5523 3 22 3.44772 22 4V20C22 20.5523 21.5523 21 21 21H3C2.44772 21 2 20.5523 2 20V4C2 3.44772 2.44772 3 3 3ZM20 7.23792L12.0718 14.338L4 7.21594V19H20V7.23792ZM4.51146 5L12.0619 11.662L19.501 5H4.51146Z" fill="currentColor"/></svg>
         </a>
@@ -42,12 +58,6 @@
   <main>
     {% block content %}{% endblock %}
   </main>
-  <footer>
-    <span>&copy; {{ now() | date(format="%Y") }} {{ config.author }}</span>
-    <a href="{% block feed_url %}{{ get_url(path='atom.xml') }}{% endblock %}" aria-label="RSS Feed" title="RSS Feed">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 3C12.9411 3 21 11.0589 21 21H18C18 12.7157 11.2843 6 3 6V3ZM3 10C9.07513 10 14 14.9249 14 21H11C11 16.5817 7.41828 13 3 13V10ZM3 17C5.20914 17 7 18.7909 7 21H3V17Z" fill="currentColor"/></svg>
-    </a>
-  </footer>
   <script>
     document.querySelectorAll('pre').forEach(function(pre) {
       var btn = document.createElement('button');
