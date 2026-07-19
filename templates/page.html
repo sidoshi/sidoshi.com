@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block title %}{{ page.title }} | {{ config.title }}{% endblock %}
+{% block description %}{{ page.summary | default(value=page.description) | default(value=config.description) }}{% endblock %}
+
+{% block content %}
+<article>
+  <header class="post-header">
+    <h1>{{ page.title }}</h1>
+    <div class="post-meta">
+      <time datetime="{{ page.date }}">{{ page.date | date(format="%b %d, %Y") }} </time>
+      {% if page.updated %}
+      <span class="updated">(updated <time datetime="{{ page.updated }}">{{ page.updated | date(format="%b %d, %Y") }}</time>) </span>
+      {% endif %}
+      {% if page.authors and page.authors | length > 0 %}
+      <span class="author">by {{ page.authors | join(sep=", ") }}</span>
+      {% endif %}
+      {% if page.taxonomies.tags %}
+      <span class="tags">
+        {% for tag in page.taxonomies.tags %}
+        <a href="{{ get_taxonomy_url(kind='tags', name=tag) }}">{{ tag }}</a>
+        {% endfor %}
+      </span>
+      {% endif %}
+    </div>
+  </header>
+  {% if page.toc %}
+  <nav class="toc">
+    <details>
+      <summary>Table of Contents</summary>
+      <ul>
+        {% for h in page.toc %}
+        <li><a href="{{ h.permalink }}">{{ h.title }}</a>
+          {% if h.children %}
+          <ul>
+            {% for child in h.children %}
+            <li><a href="{{ child.permalink }}">{{ child.title }}</a></li>
+            {% endfor %}
+          </ul>
+          {% endif %}
+        </li>
+        {% endfor %}
+      </ul>
+    </details>
+  </nav>
+  {% endif %}
+  {{ page.content | safe }}
+</article>
+<a href="#top" class="back-to-top">Back to top</a>
+{% endblock %}

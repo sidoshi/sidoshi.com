@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block title %}{{ section.title }} | {{ config.title }}{% endblock %}
+
+{% block content %}
+<h1>{{ section.title }}</h1>
+{{ section.content | safe }}
+
+{% if paginator %}
+{% set pages = paginator.pages %}
+{% else %}
+{% set pages = section.pages %}
+{% endif %}
+
+<ul class="post-list">
+  {% for page in pages %}
+  <li>
+    <a href="{{ page.permalink }}">{{ page.title }}</a>
+    <time datetime="{{ page.date }}">{{ page.date | date(format="%b %d, %Y") }}</time>
+  </li>
+  {% endfor %}
+</ul>
+
+{% if paginator %}
+<nav class="pagination">
+  {% if paginator.previous %}
+  <a href="{{ paginator.previous }}">&larr; Newer</a>
+  {% endif %}
+  {% if paginator.next %}
+  <a href="{{ paginator.next }}">Older &rarr;</a>
+  {% endif %}
+</nav>
+{% endif %}
+{% endblock %}
