@@ -115,6 +115,35 @@ header nav {
   }
 }
 
+.empty {
+  min-height: 100dvh;
+  justify-content: center;
+
+  header nav {
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-bottom: 0;
+  }
+
+  .site-id {
+    align-items: center;
+  }
+
+  .site-title {
+    font-size: 2rem;
+  }
+
+  .site-name {
+    font-size: 1rem;
+  }
+
+  main,
+  .divider,
+  .theme-toggle {
+    display: none;
+  }
+}
+
 main {
   flex: 1;
 

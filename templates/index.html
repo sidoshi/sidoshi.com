@@ -1,5 +1,7 @@
 {% extends "base.html" %}
 
+{% block body_class %}{% set blog = get_section(path="blog/_index.md") %}{% if blog.pages | length == 0 %}empty{% endif %}{% endblock %}
+
 {% block content %}
 {% set blog = get_section(path="blog/_index.md") %}
 {% if blog.pages %}
