@@ -1,3 +1,21 @@
 [tools]
-just = "latest"
-zola = "latest"
+zola = "0.22.1"
+
+[tasks.serve]
+run = "zola serve --drafts"
+
+[tasks.build]
+run = "zola build"
+
+[tasks.post]
+quiet = true
+usage = 'arg "<title>"'
+run = '''
+d=$(date +%Y-%m-%d)
+slug=$(printf '%s' "$usage_title" | tr '[:upper:]' '[:lower:]' | sed -E 's/[^a-z0-9]+/-/g; s/^-|-$//g')
+f="content/blog/$d-$slug.md"
+[ -e "$f" ] && { echo "exists: $f" >&2; exit 1; }
+title=$(printf '%s' "$usage_title" | sed 's/\\/\\\\/g; s/"/\\"/g')
+printf '+++\ntitle = "%s"\ndate = %s\ndraft = true\n\n[taxonomies]\ntags = []\n+++\n' "$title" "$d" > "$f"
+echo "$f"
+'''

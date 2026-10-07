@@ -11,5 +11,9 @@
   </li>
   {% endfor %}
 </ul>
+{% set tags = get_taxonomy(kind="tags") %}
+{% if tags.items | length > 0 %}
+<a href="{{ get_url(path='tags') }}" class="all-tags">all tags &rarr;</a>
+{% endif %}
 {% endif %}
 {% endblock %}
